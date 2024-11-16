@@ -1,0 +1,3 @@
+[submodule "cfssl-ocsp"]
+	path = cfssl-ocsp
+	url = https://github.com/Paper-Dragon/cfssl-ocsp.git

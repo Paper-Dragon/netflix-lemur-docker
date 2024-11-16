@@ -44,11 +44,11 @@ copy_env_files:
 	[ -f .pgsql.env ] || cp .pgsql.env.dist .pgsql.env && echo ".pgsql.env created from scratch"
 
 lemur_checkout:
-	[ -d $(LEMUR_GIT_DIR) ] || git clone --depth=1 https://github.com/Netflix/lemur.git $(LEMUR_GIT_DIR)
-	cd $(LEMUR_GIT_DIR) && git pull
+	[ -d $(LEMUR_GIT_DIR) ] || git clone https://github.com/Netflix/lemur.git $(LEMUR_GIT_DIR)
+	cd $(LEMUR_GIT_DIR) && git pull -t && git checkout v1.8.2
 
 build_containers: deps
-	docker-compose build || sudo docker-compose build || echo "failed to build containers"
+	docker-compose build --progress plain || sudo docker-compose build || echo "failed to build containers"
 
 restart_containers: deps
 	docker-compose stop || sudo docker-compose stop || echo "failed to stop containers"
