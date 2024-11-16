@@ -32,7 +32,7 @@ services:
       - 447:443
 
   lemur:
-    image: netflix-lemur:latest
+    image: jockerdragon/lemur-docker:latest
     build:
       context: ./lemur-build-docker
     environment:
